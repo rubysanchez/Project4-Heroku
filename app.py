@@ -15,7 +15,7 @@ def index():
 @app.route("/data")
 def data():
     #SQL lite
-    return ("resources/file.json")
+    return jsonify(data())
 
 @app.route("/model/", method=["POST", "GET"])
 def model():
