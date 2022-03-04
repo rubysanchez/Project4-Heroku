@@ -5,7 +5,8 @@ from flask import Flask, render_template, request, redirect, jsonify, make_respo
 
 app = Flask(__name__)
 
-prediction_model = pickle.load(open("resources/machine_learning_model.pkl","rb"))
+prediction_model = pickle.load(open("resources/file.pkl","rb"))
+
 @app.route("/")
 def index():
     #home page for info and navigation
@@ -14,7 +15,7 @@ def index():
 @app.route("/data")
 def data():
     #SQL lite
-    return ("#jsonified response")
+    return ("resources/file.json")
 
 @app.route("/model/", method=["POST", "GET"])
 def model():

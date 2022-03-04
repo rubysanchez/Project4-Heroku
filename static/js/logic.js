@@ -1,8 +1,16 @@
 function init() {
 
-    // d3.json("/data").then()... (Once database is ready to call)
+    // Once database is ready to call the data endpoint
+    // d3.json("/data").then((data) => {
+    //     let ages = data.ages;
+    //     let income = data.income;
+    //     let gender = data.gender;
+    //     let ethnicity = data.ethnicity;
+    //     let stage = data.stage;
+    //     let site = data.site;
+    // });
     
-    //temp data
+    // Hardcoding the lists with temporary data
     let ages = ["0-7","8-10"];
     let income = ["<15K",">25k"];
     let gender = ["Male", "Female"];
@@ -10,7 +18,7 @@ function init() {
     let stage = ["I", "II", "III", "IA", "IB", "IIA", "IIB"];
     let site = ["Prostate", "Ovary", "Breast", "Thyroid"];
 
-    
+    // Select the form fields
     let age_select = d3.select("#age");
     let income_select = d3.select("#income");
     let gender_select = d3.select("#gender");
@@ -18,7 +26,7 @@ function init() {
     let stage_select = d3.select("#stage");
     let site_select = d3.select("#site");
 
-    // 5 js lists with 2 options in list
+    // Append the options to the select fields
     ages.forEach(function(option) {
         age_select.append("option").text(option).property("value", option);
     });
@@ -39,5 +47,5 @@ function init() {
     })
 }
 
-// Initialize the dashboard
+// Initialize the function
 init();
