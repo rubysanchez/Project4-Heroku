@@ -580,20 +580,29 @@
                   </select>
                 </div>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message">Unable to process your request. Please try again later.</div>
-                <div class="sent-message">The predicted rate of survival is {{pred}} months</div>
-              </div>
               <a href="/model/">
-                <div class="text-center"><button type="submit">Make Prediction</button></div>
+                <div class="text-center"><button type="submit" onclick="popFunction()">Make Prediction</button><br/>
+                </div>
              </a>
+             <div class="popup">
+              <span class="popuptext" id="popUp">The AIMR predicted rate of survival is {{pred}} months.</span>
+             </div>
+             
             </form>
           </div>
         </div>
-
       </div>
     </section>
+
+    <!-- Start popup function -->
+    <script>
+      function popFunction() {
+        var popup = document.getElementById("popUp");
+        popup.classList.toggle("show");
+      }
+    </script>
+    <!-- End popup function -->
+
     <!-- End Form Section -->
         <!-- ======= Resources Section ======= -->
         <section id="resources" class="contact">
