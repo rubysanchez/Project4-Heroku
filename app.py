@@ -12,9 +12,15 @@ def index():
     #home page for info and navigation
     return render_template("index.html")
 
+@app.route("/viz")
+def index():
+    #home page for info and navigation
+    return render_template("viz.html")
+
 @app.route("/data")
 def data():
     #SQL lite
+    data = database_path ="resources/survivalprediction.sqllite"
     return jsonify(data())
 
 @app.route("/model/", method=["POST", "GET"])

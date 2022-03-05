@@ -2,12 +2,13 @@ function init() {
 
     // Once database is ready to call the data endpoint
     // d3.json("/data").then((data) => {
-    //     let ages = data.ages;
-    //     let income = data.income;
-    //     let gender = data.gender;
-    //     let ethnicity = data.ethnicity;
-    //     let stage = data.stage;
-    //     let site = data.site;
+    //     let ages = data.Age;
+    //     let income = data.Median_Household_Income;
+    //     let gender = data.Gender;
+    //     let ethnicity = data.Race;
+    //     let stage = data.Cancer_Stage;
+    //     let site = data.Cancer_Site;
+    //     let type = data.Cancer_Type;
     // });
     
     // Hardcoding the lists with temporary data
