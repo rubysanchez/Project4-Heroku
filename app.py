@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, jsonify, make_respo
 
 app = Flask(__name__)
 
-prediction_model = pickle.load(open("resources/file.pkl","rb"))
+prediction_model = pickle.load(open("resources/model.pkl","rb"))
 
 @app.route("/")
 def index():
@@ -27,8 +27,13 @@ def data():
 def model():
     #model the prediction
     if request.method == "POST":
-        input = request.form
-    pred = prediction_model.predict(input)
+        input_age = request.form["age"]
+        input_income = request.form["income"]
+        input_gender = request.form["gender"]
+        input_stage = request.form["stage"]
+        input_site = request.form["site"]
+    factors = [[input_age,input_income, input_gender, input_stage, input_site]]
+    pred = prediction_model.predict(factors)
     return render_template("index.html", pred=pred)
 
 if __name__ == '__main__':
