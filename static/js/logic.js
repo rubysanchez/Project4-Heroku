@@ -1,23 +1,24 @@
 function init() {
 
     // Once database is ready to call the data endpoint
-    // d3.json("/data").then((data) => {
-    //     let ages = data.Age;
-    //     let income = data.Median_Household_Income;
-    //     let gender = data.Gender;
-    //     let ethnicity = data.Race;
-    //     let stage = data.Cancer_Stage;
-    //     let site = data.Cancer_Site;
-    //     let type = data.Cancer_Type;
-    // });
+    d3.json("/data").then((data) => {
+        console.log(data.prediction);
+        // var ages = data.Age;
+        // var income = data.Median_Household_Income;
+        // var gender = data.Gender;
+        // var ethnicity = data.Race;
+        // var stage = data.Cancer_Stage;
+        // var site = data.Cancer_Site;
+        // var type = data.Cancer_Type;
+    });
     
     // Hardcoding the lists with temporary data
-    let ages = ["0-7","8-10"];
-    let income = ["<15K",">25k"];
-    let gender = ["Male", "Female"];
-    let ethnicity = ["Non-Hispanic White", "Hispanic (All Races)", "Non-Hispanic Black"];
-    let stage = ["I", "II", "III", "IA", "IB", "IIA", "IIB"];
-    let site = ["Prostate", "Ovary", "Breast", "Thyroid"];
+    // let ages = ["0-7","8-10"];
+    // let income = ["<15K",">25k"];
+    // let gender = ["Male", "Female"];
+    // let ethnicity = ["Non-Hispanic White", "Hispanic (All Races)", "Non-Hispanic Black"];
+    // let stage = ["I", "II", "III", "IA", "IB", "IIA", "IIB"];
+    // let site = ["Prostate", "Ovary", "Breast", "Thyroid"];
 
     // Select the form fields
     let age_select = d3.select("#age");

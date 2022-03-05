@@ -130,7 +130,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-data"></i></div>
-              <h4 class="title"><a href="/viz">2 million+ data points </a></h4>
+              <h4 class="title"><a href="viz.html">2 million+ data points </a></h4>
               <p class="description"> We use more than 2 million data points from the reputable SER data source to develop, train, and test AIMR algorithms.</p>
             </div>
           </div>
@@ -138,7 +138,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-hourglass"></i></div>
-              <h4 class="title"><a>Age factors</a></h4>
+              <h4 class="title"><a href="viz.html">Age factors</a></h4>
               <p class="description">Data points include patients grouped into 19 distinct age groups in order to measure age as a factor in survival rate outcomes.</p>
             </div>
           </div>
@@ -146,7 +146,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-group"></i></div>
-              <h4 class="title"><a>Ethnicity factors</a></h4>
+              <h4 class="title"><a href="viz.html">Ethnicity factors</a></h4>
               <p class="description">Data points are racially and ethinically diversified with the inclusion of patients with more than 10 different race and ethnicity backgrounds.</p>
             </div>
           </div>
@@ -154,7 +154,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-layer"></i></div>
-              <h4 class="title"><a>20+ cancer stages </a></h4>
+              <h4 class="title"><a href="viz.html">20+ cancer stages </a></h4>
               <p class="description">Data points include patients in all stages of cancer and more than 20 types of cancer diagnosis.</p>
             </div>
           </div>
@@ -163,6 +163,131 @@
 
       </div>
     </section><!-- End Icon Boxes Section -->
+
+     <!-- ======= Forms Section ======= -->
+     <section id="form" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Submission Form</h2>
+          <p>Fill in the patient demographics below then click make prediction to test these factors against AIMR trained models.</p>
+        </div>
+
+        <div class="row mt-1 d-flex justify-content-center" data-aos="fade-right" data-aos-delay="100">
+
+          <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+
+            <form action="/model" method="POST" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group mt-3">
+                  <select type="text" name="age" class="form-control" id="age" placeholder="Patient Age" required>
+                    <option value="" disabled selected>Patient Age</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group mt-3">
+                  <select type="text" class="form-control" name="income" id="income" placeholder="Patient Income" required> 
+                    <option value="" disabled selected>Patient Income</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group mt-3">
+                  <select type="text" class="form-control" name="gender" id="gender" placeholder="Patient Gender" required>
+                    <option value="" disabled selected>Patient Gender</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group mt-3">
+                  <select type="text" class="form-control" name="ethnicity" id="ethnicity" placeholder="Patient Ethnicity" required>
+                    <option value="" disabled selected>Patient Ethnicity</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group mt-3">
+                  <select type="text" class="form-control" name="stage" id="stage" placeholder="Cancer Stage Diagnosis" required>
+                    <option value="" disabled selected>Cancer Stage Diagnosis</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group mt-3">
+                  <select type="text" class="form-control" name="site" id="site" placeholder="Cancer Site Diagnosis" required>
+                    <option value="" disabled selected>Cancer Site Diagnosis</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group mt-3">
+                  <select type="text" class="form-control" name="type" id="type" placeholder="Cancer Type Diagnosis" required>
+                    <option value="" disabled selected>Cancer Type Diagnosis</option>
+                  </select>
+                </div>
+              </div>
+              <a href="/model/">
+                <div class="text-center"><button type="submit" onclick="popFunction()">Make Prediction</button><br/>
+                </div>
+             </a>
+             <div class="popup">
+              <span class="popuptext" id="popUp">The AIMR predicted rate of survival is {{pred}} months.</span>
+             </div>
+             
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Start popup function -->
+    <script>
+      function popFunction() {
+        var popup = document.getElementById("popUp");
+        popup.classList.toggle("show");
+      }
+    </script>
+    <!-- End popup function -->
+
+    <!--Try MODAL-->
+    <div id="myModal" class="modal">
+        <div class="modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"><b>Our Predictions</b></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 ms-auto">
+                                <h1 id="output"></h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="myDiv"></div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div id="myDiv2" style="height:320px"></div>
+                                <p>Our two-step model identifies whether or not an incident ended in a Suspension in Model 1.  If the probabilitiy of Suspension is less than 50%, the incident is then run through Model 2 to determine the probability that an incident ending in Arrest or Clearance.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End MODAL-->
+
+    <!-- End Form Section -->
 
     <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq section-bg">
@@ -524,86 +649,6 @@
       </div>
     </section><!-- End Team Section -->
 
-    <!-- ======= Forms Section ======= -->
-    <section id="form" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Submission Form</h2>
-          <p>Fill in the patient demographics below then click make prediction to test these factors against AIMR trained models.</p>
-        </div>
-
-        <div class="row mt-1 d-flex justify-content-center" data-aos="fade-right" data-aos-delay="100">
-
-          <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
-
-            <form action="/model" method="POST" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group mt-3">
-                  <select type="text" name="age" class="form-control" id="age" placeholder="Patient Age" required>
-                    <option value="" disabled selected>Patient Age</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group mt-3">
-                  <select type="text" class="form-control" name="income" id="income" placeholder="Patient Income" required> 
-                    <option value="" disabled selected>Patient Income</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group mt-3">
-                  <select type="text" class="form-control" name="gender" id="gender" placeholder="Patient Gender" required>
-                    <option value="" disabled selected>Patient Gender</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group mt-3">
-                  <select type="text" class="form-control" name="ethnicity" id="ethnicity" placeholder="Patient Ethnicity" required>
-                    <option value="" disabled selected>Patient Ethnicity</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group mt-3">
-                  <select type="text" class="form-control" name="stage" id="stage" placeholder="Cancer Stage Diagnosis" required>
-                    <option value="" disabled selected>Cancer Stage Diagnosis</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group mt-3">
-                  <select type="text" class="form-control" name="site" id="site" placeholder="Cancer Site Diagnosis" required>
-                    <option value="" disabled selected>Cancer Site Diagnosis</option>
-                  </select>
-                </div>
-              </div>
-              <a href="/model/">
-                <div class="text-center"><button type="submit" onclick="popFunction()">Make Prediction</button><br/>
-                </div>
-             </a>
-             <div class="popup">
-              <span class="popuptext" id="popUp">The AIMR predicted rate of survival is {{pred}} months.</span>
-             </div>
-             
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Start popup function -->
-    <script>
-      function popFunction() {
-        var popup = document.getElementById("popUp");
-        popup.classList.toggle("show");
-      }
-    </script>
-    <!-- End popup function -->
-
-    <!-- End Form Section -->
         <!-- ======= Resources Section ======= -->
         <section id="resources" class="contact">
           <div class="container" data-aos="fade-up">
