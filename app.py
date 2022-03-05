@@ -1,4 +1,3 @@
-
 import pandas as pd
 import pickle
 from sqlalchemy import create_engine
@@ -6,6 +5,7 @@ from flask import Flask, render_template, request, redirect, jsonify, make_respo
 
 app = Flask(__name__)
 
+prediction_data = pd.read_csv('resources/Blank_Form.csv')
 prediction_model = pickle.load(open("resources/model.pkl","rb"))
 
 @app.route("/")
@@ -36,8 +36,18 @@ def model():
         input_gender = request.form["gender"]
         input_stage = request.form["stage"]
         input_site = request.form["site"]
-    factors = [input_age,input_race, input_income, input_gender, input_stage, input_site]
-    pred = prediction_model.predict(factors)
+        input_type = request.form["type"]
+
+    factors = [input_age,input_race, input_income, input_gender, input_stage, input_site, input_type]
+    prediction_data.Age = int(factors[0])
+    prediction_data[f'Race_{factors[1]}']=1
+    prediction_data[f'Median_Household_Income_{factors[2]}']=1
+    prediction_data[f'Gender_{factors[3]}']=1
+    prediction_data[f'Cancer_Stage_{factors[4]}']=1
+    prediction_data[f'Cancer_Site_{factors[5]}']=1
+    prediction_data[f'Cancer_Type_{factors[6]}']=1
+    
+    pred = prediction_model.predict(prediction_data)
     return render_template("index.html", pred=pred)
 
 if __name__ == '__main__':
