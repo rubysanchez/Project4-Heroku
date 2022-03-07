@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, redirect, jsonify, make_respo
 
 app = Flask(__name__)
 
+prediction_data = pd.read_csv('resources/Blank_Form.csv')
 prediction_model = pickle.load(open("resources/model.pkl","rb"))
 
 @app.route("/")
