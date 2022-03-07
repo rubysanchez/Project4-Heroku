@@ -1,13 +1,10 @@
-
+import numpy as np
 import pandas as pd
 import pickle
-from sqlalchemy import create_engine
-from flask import Flask, render_template, request, redirect, jsonify, make_response
+import sql_data
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
-
-prediction_data = pd.read_csv('resources/Blank_Form.csv')
-prediction_model = pickle.load(open("resources/model.pkl","rb"))
 
 @app.route("/")
 def index():
@@ -21,10 +18,8 @@ def viz():
 
 @app.route("/data")
 def data():
-    #SQL lite
-    database_path ="resources/survivalprediction.sqllite"
-    engine = create_engine(f"sqlite:///{database_path}")
-    data = engine.execute("Select * from prediction")
+    #SQL lite connection
+    data = sql_data.query()
     return jsonify(data)
 
 @app.route("/model/", methods=["POST", "GET"])
@@ -41,8 +36,11 @@ def model():
     
     factors = [input_age,input_race, input_income, input_gender, input_stage, input_site, input_type]
 
+    #load resources 
+    prediction_data = pd.read_csv('resources/Blank_Form.csv')
+    prediction_model = pickle.load(open("resources/model.pkl","rb"))
+
     #model the prediction
-    prediction_data = pd.DataFrame()
     prediction_data['Age'] = int(factors[0])
     prediction_data[f'Race_{factors[1]}']=1
     prediction_data[f'Median_Household_Income_{factors[2]}']=1
