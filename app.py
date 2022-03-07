@@ -50,6 +50,7 @@ def model():
     prediction_data[f'Cancer_Stage_{factors[4]}']=1
     prediction_data[f'Cancer_Site_{factors[5]}']=1
     prediction_data[f'Cancer_Type_{factors[6]}']=1
+    model.predict(np.reshape(np.array(prediction_data.values.tolist()),(1,198)))
     
     #make the prediction
     pred = prediction_model.predict(prediction_data)
