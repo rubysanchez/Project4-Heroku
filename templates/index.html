@@ -9,6 +9,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -34,7 +35,8 @@
 </head>
 
 <body>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://unpkg.com/d3-v6-tip@1.0.6/build/d3-v6-tip.js"></script>
   <!-- ======= Top Bar ======= -->
   <div id="topbar" class="fixed-top d-flex align-items-center ">
     <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
@@ -180,14 +182,12 @@
             <form action="/model" method="POST" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group mt-3">
-                  <select type="text" name="age" class="form-control" id="age" placeholder="Patient Age" required>
-                    <option value="" disabled selected>Patient Age</option>
-                  </select>
+                  <input type="text" name="age" class="form-control" id="age" placeholder="Patient Age" required>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group mt-3">
-                  <select type="text" class="form-control" name="income" id="income" placeholder="Patient Income" required> 
+                  <select type="text" class="form-control" name="income" id="income" placeholder="Patient Income" required>
                     <option value="" disabled selected>Patient Income</option>
                   </select>
                 </div>
@@ -267,16 +267,6 @@
                                 <h1 id="output"></h1>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div id="myDiv"></div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div id="myDiv2" style="height:320px"></div>
-                                <p>Our two-step model identifies whether or not an incident ended in a Suspension in Model 1.  If the probabilitiy of Suspension is less than 50%, the incident is then run through Model 2 to determine the probability that an incident ending in Arrest or Clearance.
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -351,123 +341,7 @@
     </section><!-- End Frequently Asked Questions Section -->
 
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfoio">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Gallery of AI Models</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Logistic</li>
-              <li data-filter=".filter-card">Linear</li>
-              <li data-filter=".filter-web">Forest</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="../static/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Age 1</h4>
-              <p>Age</p>
-              <a href="../static/img/portfolio/age-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Logistic 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="../static/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Forest 1</h4>
-              <p>Forest</p>
-              <a href="../static/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Forest 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="../static/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Age 2</h4>
-              <p>Age</p>
-              <a href="../static/img/portfolio/age-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Logistic 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="../static/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Linear 1</h4>
-              <p>Linear</p>
-              <a href="../static/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Linear 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="../static/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Forest 2</h4>
-              <p>Forest</p>
-              <a href="../static/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Forest 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="../static/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Age 3</h4>
-              <p>Age</p>
-              <a href="../static/img/portfolio/age-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Logistic 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="../static/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Linear 2</h4>
-              <p>Linear</p>
-              <a href="../static/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Linear 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="../static/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Linear 3</h4>
-              <p>Linear</p>
-              <a href="../static/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Linear 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="../static/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Forst 3</h4>
-              <p>Forest</p>
-              <a href="../static/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Forest 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-    <!-- End Portfoio Section -->
+   
 
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
@@ -652,7 +526,7 @@
   <script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="../static/vendor/php-email-form/validate.js"></script>
+
 
   <!-- Template Main JS File -->
   <script src="../static/js/main.js"></script>
