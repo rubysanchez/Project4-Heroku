@@ -59,8 +59,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#services">Analysis</a></li>
+          <li><a class="nav-link scrollto " href="#form">Form</a></li>
+          <li><a class="nav-link scrollto " href="#faq">FAQ</a></li>
           <li><a class="nav-link scrollto " href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#resources">Resources</a></li>
@@ -125,14 +126,14 @@
   <main id="main">
 
     <!-- ======= Icon Boxes Section ======= -->
-    <section id="icon-boxes" class="icon-boxes">
+    <section id="services" class="icon-boxes">
       <div class="container">
 
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-data"></i></div>
-              <h4 class="title"><a href="viz.html">2 million+ data points </a></h4>
+              <h4 class="title"><a href="{{url_for('viz')}}">2 million+ data points </a></h4>
               <p class="description"> We use more than 2 million data points from the reputable SER data source to develop, train, and test AIMR algorithms.</p>
             </div>
           </div>
@@ -140,7 +141,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-hourglass"></i></div>
-              <h4 class="title"><a href="viz.html#age">Age factors</a></h4>
+              <h4 class="title"><a href="{{url_for('viz')}}#age">Age factors</a></h4>
               <p class="description">Data points include patients grouped into 19 distinct age groups in order to measure age as a factor in survival rate outcomes.</p>
             </div>
           </div>
@@ -148,7 +149,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-group"></i></div>
-              <h4 class="title"><a href="viz.html#ethnicity">Ethnicity factors</a></h4>
+              <h4 class="title"><a href="{{url_for('viz')}}#ethnicity">Ethnicity factors</a></h4>
               <p class="description">Data points are racially and ethinically diversified with the inclusion of patients with more than 10 different race and ethnicity backgrounds.</p>
             </div>
           </div>
@@ -156,7 +157,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-layer"></i></div>
-              <h4 class="title"><a href="viz.html#stage">4 cancer stages </a></h4>
+              <h4 class="title"><a href="{{url_for('viz')}}#stage">4 cancer stages </a></h4>
               <p class="description">Data points include patients in 4 stages of cancer and more than 20 types of cancer diagnosis.</p>
             </div>
           </div>
@@ -227,7 +228,7 @@
                   </select>
                 </div>
               </div>
-              <a href="/model/">
+              <a href="/model">
                 <div class="text-center"><button type="submit" onclick="popFunction()">Make Prediction</button><br/>
                 </div>
              </a>

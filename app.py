@@ -3,6 +3,7 @@ import pandas as pd
 import pickle
 import sql_data
 from flask import Flask, render_template, request, jsonify
+import sys
 
 app = Flask(__name__)
 
@@ -22,7 +23,7 @@ def data():
     data = sql_data.query()
     return jsonify(data)
 
-@app.route("/model/", methods=["POST", "GET"])
+@app.route("/model", methods=["POST", "GET"])
 def model():
     #retrieve user inputs
     if request.method == "POST":
@@ -48,7 +49,7 @@ def model():
     prediction_data[f'Cancer_Stage_{factors[4]}']=1
     prediction_data[f'Cancer_Site_{factors[5]}']=1
     prediction_data[f'Cancer_Type_{factors[6]}']=1
-    model.predict(np.reshape(np.array(prediction_data.values.tolist()),(1,198)))
+    model().predict(np.reshape(np.array(prediction_data.values.tolist()),(1,198)))
     
     #make the prediction
     pred = prediction_model.predict(prediction_data)
@@ -56,5 +57,8 @@ def model():
     #return the prediction
     return render_template("index.html", pred=pred)
 
+sys.setrecursionlimit(2000)
+
 if __name__ == '__main__':
+    app.debug=True
     app.run()
