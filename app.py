@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 import pickle
+import csv
 import sql_data
 from flask import Flask, render_template, request, jsonify
-import sys
 
 app = Flask(__name__)
 
@@ -23,7 +23,7 @@ def data():
     data = sql_data.query()
     return jsonify(data)
 
-@app.route("/model", methods=["POST", "GET"])
+@app.route("/model/", methods=["POST", "GET"])
 def model():
     #retrieve user inputs
     if request.method == "POST":
@@ -35,30 +35,32 @@ def model():
         input_site = request.form["site"]
         input_type = request.form["type"]
     
-    factors = [input_age,input_race, input_income, input_gender, input_stage, input_site, input_type]
-
     #load resources 
-    prediction_data = pd.read_csv('resources/Blank_Form.csv')
+    features = []
+    prediction_data = []
+    with open('resources/Blank_Form.csv', newline='') as f:
+        reader = csv.reader(f)
+        data = list(reader)
+    
+    for row in data:
+        features.append(row[0])
+        prediction_data.append(int(row[1]))
+        
     prediction_model = pickle.load(open("resources/model.pkl","rb"))
 
     #model the prediction
-    prediction_data['Age'] = int(factors[0])
-    prediction_data[f'Race_{factors[1]}']=1
-    prediction_data[f'Median_Household_Income_{factors[2]}']=1
-    prediction_data[f'Gender_{factors[3]}']=1
-    prediction_data[f'Cancer_Stage_{factors[4]}']=1
-    prediction_data[f'Cancer_Site_{factors[5]}']=1
-    prediction_data[f'Cancer_Type_{factors[6]}']=1
-    model().predict(np.reshape(np.array(prediction_data.values.tolist()),(1,198)))
-    
-    #make the prediction
-    pred = prediction_model.predict(prediction_data)
+    prediction_data[features.index('Age')] = int(input_age)
+    prediction_data[features.index(f'Race_{input_race}')] =1
+    prediction_data[features.index(f'Median_Household_Income_{input_income}')] =1
+    prediction_data[features.index(f'Gender_{input_gender}')]=1
+    prediction_data[features.index(f'Cancer_Stage_{input_stage}')]=1
+    prediction_data[features.index(f'Cancer_Site_{input_site}')]=1
+    prediction_data[features.index(f'Cancer_Type_ {input_type}')]=1
+
+    pred = prediction_model.predict(np.reshape(np.array(prediction_data),(1,198)))
 
     #return the prediction
     return render_template("index.html", pred=pred)
 
-sys.setrecursionlimit(2000)
-
 if __name__ == '__main__':
-    app.debug=True
     app.run()
