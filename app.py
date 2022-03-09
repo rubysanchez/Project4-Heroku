@@ -23,17 +23,17 @@ def data():
     data = sql_data.query()
     return jsonify(data)
 
-@app.route("/model/", methods=["POST", "GET"])
+@app.route("/model", methods=["POST", "GET"])
 def model():
     #retrieve user inputs
-    if request.method == "POST":
-        input_age = request.form["age"]
-        input_race = request.form["ethnicity"]
-        input_income = request.form["income"]
-        input_gender = request.form["gender"]
-        input_stage = request.form["stage"]
-        input_site = request.form["site"]
-        input_type = request.form["type"]
+    #if request.method == "POST":
+    input_age = request.form["age"]
+    input_race = request.form["ethnicity"]
+    input_income = request.form["income"]
+    input_gender = request.form["gender"]
+    input_stage = request.form["stage"]
+    input_site = request.form["site"]
+    input_type = request.form["type"]
     
     #load resources 
     features = []
@@ -59,8 +59,9 @@ def model():
 
     pred = prediction_model.predict(np.reshape(np.array(prediction_data),(1,198)))
 
+    print(pred)
     #return the prediction
-    return render_template("index.html", pred=pred)
+    return render_template("model.html", pred=pred)
 
 if __name__ == '__main__':
     app.run()
