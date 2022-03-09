@@ -60,8 +60,9 @@ def model():
     pred = prediction_model.predict(np.reshape(np.array(prediction_data),(1,198)))
 
     print(pred)
+    pred_clean = str(pred).replace('[','').replace(']','')
     #return the prediction
-    return render_template("model.html", pred=pred)
+    return render_template("model.html", pred=pred_clean)
 
 if __name__ == '__main__':
     app.run()
